@@ -1,0 +1,20 @@
+{
+  "name": "quiz-builder-root",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install --prefix backend && npm install --prefix frontend",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "db:up": "docker compose up -d || docker-compose up -d",
+    "db:down": "docker compose down || docker-compose down",
+    "db:migrate": "cd backend && npx prisma migrate dev",
+    "db:seed": "cd backend && npx prisma db seed",
+    "db:setup": "npm run db:up && echo \"Waiting for database to start...\" && sleep 5 && npm run db:migrate && npm run db:seed",
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "start:all": "npm run db:setup && npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
