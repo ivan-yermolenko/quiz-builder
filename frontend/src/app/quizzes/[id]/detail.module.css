@@ -114,29 +114,14 @@
   color: #1d4ed8;
 }
 
-:global([data-theme="dark"]) .badgeBoolean {
-  background: #1e3a8a;
-  color: #93c5fd;
-}
-
 .badgeInput {
   background: #fdf2f8;
   color: #be185d;
 }
 
-:global([data-theme="dark"]) .badgeInput {
-  background: #50072b;
-  color: #fbcfe8;
-}
-
 .badgeCheckbox {
   background: #f0fdf4;
   color: #15803d;
-}
-
-:global([data-theme="dark"]) .badgeCheckbox {
-  background: #064e3b;
-  color: #86efac;
 }
 
 @media (prefers-color-scheme: dark) {

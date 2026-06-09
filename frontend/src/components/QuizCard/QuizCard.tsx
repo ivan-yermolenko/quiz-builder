@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { TrashIcon, HelpCircleIcon, CalendarIcon } from '@/components/icons';
 import { QuizListItem } from '@/types/quiz';

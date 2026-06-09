@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quiz Builder Client (Frontend)
 
-## Getting Started
+This is the Next.js frontend application for the Quiz Builder web application, built using React, App Router, and CSS Modules.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js App Router** with Server Components for data fetching and Client Components for interactivity.
+- **Form validation** using `react-hook-form` paired with `zod` for type-safe client-side schema validation.
+- **Custom Design System** using CSS variables supporting automatic dark mode (`prefers-color-scheme`).
+- **Encapsulated components** and SVG icons.
+- **SEO Best Practices** with server-side metadata and dynamic page titles.
+- **Error Boundaries & Streaming Skeletons** using Next.js `error.tsx`, `not-found.tsx`, and `loading.tsx`.
+
+## Setup & Running
+
+The frontend runs on port **3502** by default.
+
+### Configuration
+
+Create a `frontend/.env.local` file (copy from `.env.example`) to configure the API base URL:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3501/api
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+From this directory:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Run Commands
 
-## Learn More
+```bash
+# Development mode
+npm run dev
 
-To learn more about Next.js, take a look at the following resources:
+# Production build & preview
+npm run build
+npm run start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Code formatting & validation
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Page Routing Structure
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/quizzes` — Dashboard showing cards for all available quizzes with search, filter, and delete controls.
+- `/create` — Form to build a new quiz, dynamically managing questions and options.
+- `/quizzes/[id]` — View details of a single quiz.
+- `not-found.tsx` — Custom 404 page.
+- `error.tsx` — Global React error boundary.
