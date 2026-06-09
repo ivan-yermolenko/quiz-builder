@@ -28,7 +28,7 @@ You can install dependencies, initialize the database schema, and launch both ap
 From the root directory of the project, run:
 
 ```bash
-npm install
+npm run install:all
 ```
 
 This installs root dependencies (like `concurrently` for running tasks in parallel) and automatically triggers the installations inside both the `backend/` and `frontend/` directories.

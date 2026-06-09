@@ -10,6 +10,8 @@ export default defineConfig({
     seed: 'ts-node prisma/seed.ts',
   },
   datasource: {
-    url: process.env['DATABASE_URL'],
+    url:
+      process.env['DATABASE_URL'] ??
+      'postgresql://postgres:postgres_password@localhost:35432/quiz_builder_db?schema=public',
   },
 });
