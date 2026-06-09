@@ -1,4 +1,8 @@
-export type QuestionType = 'BOOLEAN' | 'INPUT' | 'CHECKBOX';
+export enum QuestionType {
+  BOOLEAN = 'BOOLEAN',
+  INPUT = 'INPUT',
+  CHECKBOX = 'CHECKBOX',
+}
 
 export interface Option {
   id: string;

@@ -2,10 +2,26 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeftIcon, CalendarIcon, HelpCircleIcon } from '@/components/icons';
 import { api } from '@/services/api';
+import { QuestionType } from '@/types/quiz';
 import styles from './detail.module.css';
 
 interface PageProps {
   params: Promise<{ id: string }>;
+}
+
+const mapClassTypes = {
+  [QuestionType.INPUT]: {
+    badgeClass: styles.badgeInput,
+    displayType: 'Text Input',
+  },
+  [QuestionType.CHECKBOX]: {
+    badgeClass: styles.badgeCheckbox,
+    displayType: 'Multiple Choice',
+  },
+  [QuestionType.BOOLEAN]: {
+    badgeClass: styles.badgeBoolean,
+    displayType: 'True/False',
+  },
 }
 
 // Generate dynamic metadata for the page
@@ -82,19 +98,8 @@ export default async function QuizDetailPage({ params }: PageProps) {
 
       <section className={styles.questionList}>
         {quiz.questions.map((question, index) => {
-          const badgeClass =
-            question.type === 'BOOLEAN'
-              ? styles.badgeBoolean
-              : question.type === 'INPUT'
-                ? styles.badgeInput
-                : styles.badgeCheckbox;
-
-          const displayType =
-            question.type === 'BOOLEAN'
-              ? 'True/False'
-              : question.type === 'INPUT'
-                ? 'Text Input'
-                : 'Multiple Choice';
+          const badgeClass = mapClassTypes[question.type].badgeClass;
+          const displayType = mapClassTypes[question.type].displayType;
 
           return (
             <div key={question.id} className={styles.questionCard}>
@@ -105,7 +110,7 @@ export default async function QuizDetailPage({ params }: PageProps) {
                 <span className={`${styles.badge} ${badgeClass}`}>{displayType}</span>
               </div>
 
-              {question.type === 'INPUT' ? (
+              {question.type === QuestionType.INPUT ? (
                 <div className={styles.inputWrapper}>
                   <span className={styles.inputLabel}>Correct Answer:</span>
                   <input
@@ -125,7 +130,7 @@ export default async function QuizDetailPage({ params }: PageProps) {
                         className={`${styles.optionItem} ${isCorrect ? styles.correctOption : ''}`}
                       >
                         <input
-                          type={question.type === 'BOOLEAN' ? 'radio' : 'checkbox'}
+                          type={question.type === QuestionType.BOOLEAN ? 'radio' : 'checkbox'}
                           readOnly
                           checked={isCorrect}
                           className={styles.optionControl}

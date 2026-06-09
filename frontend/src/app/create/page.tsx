@@ -18,14 +18,14 @@ const optionSchema = z.object({
 const questionSchema = z
   .object({
     text: z.string().min(1, 'Question text is required'),
-    type: z.enum(['BOOLEAN', 'INPUT', 'CHECKBOX']),
+    type: z.nativeEnum(QuestionType),
     order: z.number().int().min(0),
     options: z.array(optionSchema),
   })
   .superRefine((data, ctx) => {
     const { type, options } = data;
 
-    if (type === 'BOOLEAN') {
+    if (type === QuestionType.BOOLEAN) {
       if (options.length !== 2) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
@@ -44,7 +44,7 @@ const questionSchema = z
       }
     }
 
-    if (type === 'INPUT') {
+    if (type === QuestionType.INPUT) {
       if (options.length !== 1) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
@@ -62,7 +62,7 @@ const questionSchema = z
       }
     }
 
-    if (type === 'CHECKBOX') {
+    if (type === QuestionType.CHECKBOX) {
       if (options.length < 1) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
@@ -107,7 +107,7 @@ export default function CreateQuizPage() {
       questions: [
         {
           text: '',
-          type: 'BOOLEAN',
+          type: QuestionType.BOOLEAN,
           order: 0,
           options: [
             { text: 'True', isCorrect: true },
@@ -162,14 +162,14 @@ export default function CreateQuizPage() {
 
   const handleTypeChange = (index: number, newType: QuestionType) => {
     // Dynamically adjust options state when changing question types
-    if (newType === 'BOOLEAN') {
+    if (newType === QuestionType.BOOLEAN) {
       setValue(`questions.${index}.options`, [
         { text: 'True', isCorrect: true },
         { text: 'False', isCorrect: false },
       ]);
-    } else if (newType === 'INPUT') {
+    } else if (newType === QuestionType.INPUT) {
       setValue(`questions.${index}.options`, [{ text: '', isCorrect: true }]);
-    } else if (newType === 'CHECKBOX') {
+    } else if (newType === QuestionType.CHECKBOX) {
       setValue(`questions.${index}.options`, [
         { text: '', isCorrect: true },
         { text: '', isCorrect: false },
@@ -271,9 +271,9 @@ export default function CreateQuizPage() {
               <div className={styles.optionsSection}>
                 <div className={styles.optionsHeader}>
                   <span className={styles.optionsTitle}>
-                    {questionType === 'INPUT' ? 'Correct Answer' : 'Answer Options'}
+                    {questionType === QuestionType.INPUT ? 'Correct Answer' : 'Answer Options'}
                   </span>
-                  {questionType === 'CHECKBOX' && (
+                  {questionType === QuestionType.CHECKBOX && (
                     <button
                       type="button"
                       onClick={() => {
@@ -295,7 +295,7 @@ export default function CreateQuizPage() {
                 )}
 
                 {/* Conditional options rendering by question type */}
-                {questionType === 'BOOLEAN' && (
+                {questionType === QuestionType.BOOLEAN && (
                   <div className={styles.optionsList}>
                     {/* True Option */}
                     <div className={styles.optionRow}>
@@ -341,7 +341,7 @@ export default function CreateQuizPage() {
                   </div>
                 )}
 
-                {questionType === 'INPUT' && (
+                {questionType === QuestionType.INPUT && (
                   <div className={styles.optionsList}>
                     <div className={styles.optionRow}>
                       <input
@@ -359,7 +359,7 @@ export default function CreateQuizPage() {
                   </div>
                 )}
 
-                {questionType === 'CHECKBOX' && (
+                {questionType === QuestionType.CHECKBOX && (
                   <div className={styles.optionsList}>
                     {currentQuestionWatch.options?.map((option, optIndex) => (
                       <div key={optIndex} className={styles.optionRow}>
@@ -407,7 +407,7 @@ export default function CreateQuizPage() {
           onClick={() =>
             appendQuestion({
               text: '',
-              type: 'BOOLEAN',
+              type: QuestionType.BOOLEAN,
               order: questionFields.length,
               options: [
                 { text: 'True', isCorrect: true },
