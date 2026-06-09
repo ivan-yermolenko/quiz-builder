@@ -32,18 +32,18 @@ export class IsValidOptionsConstraint implements ValidatorConstraintInterface {
 
     if (type === QuestionType.BOOLEAN) {
       if (opts.length !== 2) return false;
-      const correctCount = opts.filter((o) => o.isCorrect === true).length;
+      const correctCount = opts.filter((o) => o.isCorrect).length;
       return correctCount === 1;
     }
 
     if (type === QuestionType.INPUT) {
       if (opts.length !== 1) return false;
-      return opts[0].isCorrect === true;
+      return opts[0].isCorrect;
     }
 
     if (type === QuestionType.CHECKBOX) {
       if (opts.length < 1) return false;
-      const correctCount = opts.filter((o) => o.isCorrect === true).length;
+      const correctCount = opts.filter((o) => o.isCorrect).length;
       return correctCount >= 1;
     }
 
