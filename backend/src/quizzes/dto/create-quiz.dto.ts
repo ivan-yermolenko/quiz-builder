@@ -13,6 +13,7 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
+import { IsValidOptions } from './decorators/is-valid-options.decorator';
 
 export class CreateOptionDto {
   @ApiProperty({ description: 'Text of the option', example: 'Paris' })
@@ -55,6 +56,7 @@ export class CreateQuestionDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreateOptionDto)
+  @IsValidOptions()
   @IsOptional()
   options?: CreateOptionDto[];
 }
