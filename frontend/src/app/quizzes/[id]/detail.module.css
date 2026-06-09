@@ -1,0 +1,250 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition-all);
+  align-self: flex-start;
+}
+
+.backBtn:hover {
+  color: var(--primary);
+  transform: translateX(-2px);
+}
+
+.titleSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+.metaInfo {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.questionCard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: var(--transition-all);
+}
+
+.questionCard:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.questionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.questionText {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeBoolean {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+:global([data-theme="dark"]) .badgeBoolean {
+  background: #1e3a8a;
+  color: #93c5fd;
+}
+
+.badgeInput {
+  background: #fdf2f8;
+  color: #be185d;
+}
+
+:global([data-theme="dark"]) .badgeInput {
+  background: #50072b;
+  color: #fbcfe8;
+}
+
+.badgeCheckbox {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+:global([data-theme="dark"]) .badgeCheckbox {
+  background: #064e3b;
+  color: #86efac;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badgeBoolean {
+    background: #1e3a8a;
+    color: #93c5fd;
+  }
+  .badgeInput {
+    background: #50072b;
+    color: #fbcfe8;
+  }
+  .badgeCheckbox {
+    background: #064e3b;
+    color: #86efac;
+  }
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.optionItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.02);
+  font-size: 0.95rem;
+  transition: var(--transition-all);
+}
+
+@media (prefers-color-scheme: dark) {
+  .optionItem {
+    background: rgba(255, 255, 255, 0.02);
+  }
+}
+
+.correctOption {
+  background: var(--success-light) !important;
+  border-color: var(--success);
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.optionControl {
+  pointer-events: none;
+}
+
+.correctLabel {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Input Type styles */
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--success);
+  border-radius: var(--radius-md);
+  background: var(--success-light);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--foreground);
+  pointer-events: none;
+}
+
+.inputLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.errorState {
+  text-align: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.errorTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.errorText {
+  color: var(--text-muted);
+}
