@@ -20,7 +20,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin:
-      configService.get<string>('FRONTEND_URL') ?? 'http://localhost:3500',
+      configService.get<string>('FRONTEND_URL') ?? 'http://localhost:3501',
   });
 
   setupSwagger(app);
