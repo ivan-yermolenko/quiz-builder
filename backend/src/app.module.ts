@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
-import { QuizModule } from './quiz/quiz.module';
+import { QuizzesModule } from './quizzes/quizzes.module';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { QuizModule } from './quiz/quiz.module';
       isGlobal: true,
     }),
     PrismaModule,
-    QuizModule,
+    QuizzesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
