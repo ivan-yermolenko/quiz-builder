@@ -5,7 +5,7 @@ services:
     image: postgres:15-alpine
     container_name: quiz-postgres
     ports:
-      - '5432:5432'
+      - '35432:5432'
     environment:
       POSTGRES_DB: quiz_builder_db
       POSTGRES_USER: postgres
