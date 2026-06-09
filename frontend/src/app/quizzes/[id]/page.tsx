@@ -9,7 +9,7 @@ interface PageProps {
   params: Promise<{ id: string }>;
 }
 
-const mapClassTypes = {
+const QUESTION_TYPE_CONFIG = {
   [QuestionType.INPUT]: {
     badgeClass: styles.badgeInput,
     displayType: 'Text Input',
@@ -22,7 +22,7 @@ const mapClassTypes = {
     badgeClass: styles.badgeBoolean,
     displayType: 'True/False',
   },
-}
+} as const;
 
 // Generate dynamic metadata for the page
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -98,8 +98,8 @@ export default async function QuizDetailPage({ params }: PageProps) {
 
       <section className={styles.questionList}>
         {quiz.questions.map((question, index) => {
-          const badgeClass = mapClassTypes[question.type].badgeClass;
-          const displayType = mapClassTypes[question.type].displayType;
+          const badgeClass = QUESTION_TYPE_CONFIG[question.type].badgeClass;
+          const displayType = QUESTION_TYPE_CONFIG[question.type].displayType;
 
           return (
             <div key={question.id} className={styles.questionCard}>

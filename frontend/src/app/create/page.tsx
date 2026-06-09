@@ -193,7 +193,6 @@ export default function CreateQuizPage() {
       {submitError && <div className={styles.globalError}>⚠️ {submitError}</div>}
 
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        {/* Quiz Title Card */}
         <div className={styles.card}>
           <div>
             <label htmlFor="title" className={styles.label}>
@@ -210,7 +209,6 @@ export default function CreateQuizPage() {
           </div>
         </div>
 
-        {/* Dynamic Questions List */}
         <div className={styles.questionListHeader}>
           <h2 className={styles.sectionTitle}>Questions</h2>
           {errors.questions?.message && (
@@ -224,7 +222,6 @@ export default function CreateQuizPage() {
 
           return (
             <div key={field.id} className={styles.questionBlock}>
-              {/* Question Header Actions */}
               <div className={styles.questionHeader}>
                 <span className={styles.questionNum}>Question #{index + 1}</span>
                 {questionFields.length > 1 && (
@@ -239,7 +236,6 @@ export default function CreateQuizPage() {
                 )}
               </div>
 
-              {/* Question Text Input */}
               <div>
                 <label className={styles.label}>Question Text</label>
                 <input
