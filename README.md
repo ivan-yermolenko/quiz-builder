@@ -44,28 +44,28 @@ npm run start:all
 ```
 
 Once started:
-- **Web Application Dashboard**: **http://localhost:3502**
-- **Interactive Swagger Documentation**: **http://localhost:3501/api/docs**
+- **Web Application Dashboard**: **http://localhost:3501**
+- **Interactive Swagger Documentation**: **http://localhost:3500/api/docs**
 
 ---
 
 ## Optional: Custom Configuration (.env)
 
-By default, the application is pre-configured to connect to the Docker database on port **35432** and run the servers on ports **3501** (backend) and **3502** (frontend). 
+By default, the application is pre-configured to connect to the Docker database on port **35432** and run the servers on ports **3500** (backend) and **3501** (frontend). 
 
 If you want to customize these values (e.g. for staging or production deployment), you can optionally create environment files:
 
 1. **Backend**:
    Create a `backend/.env` file (see `backend/.env.example`):
    ```env
-   PORT=3501
+   PORT=3500
    DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<db_name>?schema=public"
-   FRONTEND_URL="http://localhost:3502"
+   FRONTEND_URL="http://localhost:3501"
    ```
 2. **Frontend**:
    Create a `frontend/.env.local` file (see `frontend/.env.example`):
    ```env
-   NEXT_PUBLIC_API_URL=http://localhost:3501/api
+   NEXT_PUBLIC_API_URL=http://localhost:3500/api
    ```
 
 ---
@@ -74,7 +74,7 @@ If you want to customize these values (e.g. for staging or production deployment
 
 ### Creating a Quiz
 
-1. Open **http://localhost:3502** in your browser.
+1. Open **http://localhost:3501** in your browser.
 2. Click **Create Quiz** in the top navigation bar.
 3. Enter a quiz title (e.g. *JavaScript Trivia*).
 4. Add your questions:

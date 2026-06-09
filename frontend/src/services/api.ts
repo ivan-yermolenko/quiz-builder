@@ -1,6 +1,6 @@
-import { CreateQuizInput, Quiz, QuizListItem } from '../types/quiz';
+import { CreateQuizInput, Quiz, QuizListItem } from '@/types/quiz';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3501/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3500/api';
 
 async function handleResponse<T>(response: Response): Promise<T> {
   if (!response.ok) {

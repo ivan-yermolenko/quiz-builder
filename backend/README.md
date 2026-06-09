@@ -12,7 +12,7 @@ This is the NestJS backend service for the Quiz Builder web application. It conn
 
 ## Setup & Running
 
-The backend runs on port **3501** by default.
+The backend runs on port **3500** by default.
 
 ### Prerequisites
 
@@ -62,7 +62,7 @@ npm run test:e2e
 ## API Endpoints
 
 Once running, interactive Swagger API docs are available at:  
-👉 **[http://localhost:3501/api/docs](http://localhost:3501/api/docs)**
+👉 **[http://localhost:3500/api/docs](http://localhost:3500/api/docs)**
 
 ### Summary of REST Endpoints:
 

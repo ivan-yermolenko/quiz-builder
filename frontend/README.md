@@ -13,13 +13,13 @@ This is the Next.js frontend application for the Quiz Builder web application, b
 
 ## Setup & Running
 
-The frontend runs on port **3502** by default.
+The frontend runs on port **3501** by default.
 
 ### Configuration
 
 Create a `frontend/.env.local` file (copy from `.env.example`) to configure the API base URL:
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:3501/api
+NEXT_PUBLIC_API_URL=http://localhost:3500/api
 ```
 
 ### Installation
